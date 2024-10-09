@@ -84,13 +84,13 @@ public class Employee {
 			System.out.println("Enter number of empoloyees you want to insert");
 			int n = sc.nextInt();
 			while (n > 0) {
-				System.out.println("Enter emp id:");
+				System.out.println("Enter employee id:");
 				int id = sc.nextInt();
-				System.out.println("Enter emp id:");
+				System.out.println("Enter employee name:");
 				String name = sc.next();
-				System.out.println("Enter emp id:");
+				System.out.println("Enter employee salary:");
 				double salary = sc.nextDouble();
-				System.out.println("Enter emp id:");
+				System.out.println("Enter employee designation:");
 				String designation = sc.next();
 	             Employee emp=new Employee(id,name,salary,designation);
 	             insert(emp, st);

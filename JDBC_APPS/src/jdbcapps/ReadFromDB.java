@@ -9,11 +9,12 @@ import java.util.Scanner;
 
 public class ReadFromDB {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		Statement st = null;
 		Connection con = null;
+		ResultSet rs = null;
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -27,7 +28,7 @@ public class ReadFromDB {
 			System.out.println("Enter table Name:");
 			String tablename = sc.next();
 			String qry1 = "select * from " + tablename;
-			ResultSet rs = st.executeQuery(qry1);
+			rs = st.executeQuery(qry1);
 
 			while (rs.next()) {
 				int id = rs.getInt(1);
@@ -39,12 +40,13 @@ public class ReadFromDB {
 		}
 
 		catch (SQLException ex) {
-
 			ex.printStackTrace();
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		} finally {
-
+			rs.close();
+			st.close();
+			con.close();
 		}
 	}
 
